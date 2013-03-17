@@ -6,6 +6,17 @@ describe "UserPages" do
   	before { visit signup_path }
   	let(:submit) { "Create my account" }
   	
+  	describe "edit" do
+  		let(:user) { FactoryGirl.create(:user) }
+  		before { visit edit_user_path(user) }
+  		
+  		describe "page" do
+  			it { should have_selector('h1', text: "Update your profile") }
+  			it { should have_selector('title', text: "Edit user") }
+  			it { should have_link('change', href: 'http://gravatar.com/emails') }
+  		end
+  	end
+  	
   	describe "with invalid information" do
   		it "should not create a user" do
   			expect { click_button submit }.not_to change(User, :count)

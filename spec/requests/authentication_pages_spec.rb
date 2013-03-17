@@ -10,11 +10,6 @@ describe "Authentication" do
 
    		it { should have_selector('title', text: 'Sign in') }
 		it { should have_selector('div.alert.alert-error', text: "Invalid") }  
-		
-		describe "followed by a signout" do
-			before { click_link "Sign out" }
-			it { should have_link('Sign in') }
-		end
 	
 		describe "after visiting another page" do
 			before { click_link "Home" }
